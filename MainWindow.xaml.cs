@@ -48,6 +48,13 @@ public partial class MainWindow : Window
         ShowCurrent();
     }
 
+    private void GoTo(int index)
+    {
+        if (_files.Count == 0) return;
+        _index = index;
+        ShowCurrent();
+    }
+
     private void ShowCurrent()
     {
         var path = _files[_index];
@@ -216,8 +223,10 @@ public partial class MainWindow : Window
     {
         switch (e.Key)
         {
-            case Key.Left or Key.Up or Key.Back: Step(-1); e.Handled = true; break;
-            case Key.Right or Key.Down or Key.Space: Step(1); e.Handled = true; break;
+            case Key.Left or Key.Up or Key.Back or Key.PageUp: Step(-1); e.Handled = true; break;
+            case Key.Right or Key.Down or Key.Space or Key.PageDown: Step(1); e.Handled = true; break;
+            case Key.Home: GoTo(0); e.Handled = true; break;
+            case Key.End: GoTo(_files.Count - 1); e.Handled = true; break;
             // OemPlus is the "= +" key and OemMinus the "- _" key, so zoom works with or without Shift.
             case Key.OemPlus or Key.Add: ZoomAtCenter(ZoomStep); e.Handled = true; break;
             case Key.OemMinus or Key.Subtract: ZoomAtCenter(1 / ZoomStep); e.Handled = true; break;

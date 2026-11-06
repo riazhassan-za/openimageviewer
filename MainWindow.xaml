@@ -12,8 +12,8 @@
                 <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
                     <Button Style="{StaticResource ToolButton}" Content="Open" ToolTip="Open (Ctrl+O)" Click="Open_Click" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
-                    <Button Style="{StaticResource ToolButton}" Content="◀" ToolTip="Previous (Left / Up / Backspace)" Click="Prev_Click" />
-                    <Button Style="{StaticResource ToolButton}" Content="▶" ToolTip="Next (Right / Down / Space)" Click="Next_Click" />
+                    <Button Style="{StaticResource ToolButton}" Content="◀" ToolTip="Previous (Left / Up / Backspace / Page Up)" Click="Prev_Click" />
+                    <Button Style="{StaticResource ToolButton}" Content="▶" ToolTip="Next (Right / Down / Space / Page Down)" Click="Next_Click" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
                     <Button Style="{StaticResource ToolButton}" Content="−" ToolTip="Zoom out (scroll down, - or _)" Click="ZoomOut_Click" />
                     <Button Style="{StaticResource ToolButton}" Content="+" ToolTip="Zoom in (scroll up, + or =)" Click="ZoomIn_Click" />
