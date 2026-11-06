@@ -10,6 +10,7 @@ no sidebars, no panels, just one simple toolbar along the top.
 - **Mouse wheel lock** (mouse-icon toggle in the toolbar, highlighted when on, **M** or m, or right-clicking the image area, toggles it): while it's on, scroll up goes to the previous image (like Left) and scroll down to the next (like Right), one image per wheel notch, instead of zooming. Zoom still works from the keys and buttons. It starts off each time the app opens.
 - **+ / =** zoom in and **- / _** zoom out, centered on the window. Both characters on each key work, so a missed Shift doesn't matter, and so do numpad + and -.
 - **F** (or f) fits the image to the window, the same as the Fit button.
+- **C** (or c, or Ctrl+C), or the copy icon next to the mouse icon, copies the current image (the full picture, not the zoomed view) to the clipboard. "Image copied to clipboard" then shows in the center for about a second and fades out.
 - **Left-click drag** pans the image when it's zoomed in.
 - **Toolbar (top only, dark to match the background)**: Open, Previous, Next, Zoom out, Zoom in, Fit, then the folder path filling the remaining space (the file name is only in the window title), with the status (index, dimensions, zoom %) on the right.
 - Images open fit-to-window. Images smaller than the window are shown at their native pixel size, not stretched up.

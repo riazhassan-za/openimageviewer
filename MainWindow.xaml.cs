@@ -1,6 +1,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 
@@ -113,6 +114,26 @@ public partial class MainWindow : Window
 
     private int _wheelDelta;
 
+    private void CopyImage()
+    {
+        if (_bitmap == null) return;
+        // Another app holding the clipboard open makes SetImage throw; don't crash over it.
+        try { Clipboard.SetImage(_bitmap); }
+        catch (System.Runtime.InteropServices.COMException) { return; }
+        ShowToast("Image copied to clipboard");
+    }
+
+    // Brief centered message: fully visible for ~1s, then fades out. A new call restarts it.
+    private void ShowToast(string message)
+    {
+        ToastText.Text = message;
+        var fade = new DoubleAnimationUsingKeyFrames();
+        fade.KeyFrames.Add(new DiscreteDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.Zero)));
+        fade.KeyFrames.Add(new DiscreteDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(1))));
+        fade.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(1.5))));
+        Toast.BeginAnimation(OpacityProperty, fade);
+    }
+
     private void ToggleWheelLock() => WheelLock.IsChecked = WheelLock.IsChecked != true;
 
     private void Viewport_MouseRightButtonUp(object sender, MouseButtonEventArgs e) => ToggleWheelLock();
@@ -193,6 +214,7 @@ public partial class MainWindow : Window
     private void ZoomIn_Click(object sender, RoutedEventArgs e) => ZoomAtCenter(ZoomStep);
     private void ZoomOut_Click(object sender, RoutedEventArgs e) => ZoomAtCenter(1 / ZoomStep);
     private void Fit_Click(object sender, RoutedEventArgs e) => ResetView();
+    private void Copy_Click(object sender, RoutedEventArgs e) => CopyImage();
     private void Fullscreen_Click(object sender, RoutedEventArgs e) => SetFullscreen(!_fullscreen);
     private void About_Click(object sender, RoutedEventArgs e) => new AboutWindow { Owner = this }.ShowDialog();
 
@@ -232,6 +254,7 @@ public partial class MainWindow : Window
             case Key.OemMinus or Key.Subtract: ZoomAtCenter(1 / ZoomStep); e.Handled = true; break;
             case Key.F: ResetView(); e.Handled = true; break; // F or f (Shift doesn't matter)
             case Key.M: ToggleWheelLock(); e.Handled = true; break;
+            case Key.C: CopyImage(); e.Handled = true; break; // C, c or Ctrl+C
             case Key.F11: SetFullscreen(!_fullscreen); e.Handled = true; break;
             case Key.Escape when _fullscreen: SetFullscreen(false); e.Handled = true; break;
             case Key.O when Keyboard.Modifiers == ModifierKeys.Control:

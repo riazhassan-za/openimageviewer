@@ -23,6 +23,9 @@
                     <ToggleButton x:Name="WheelLock" Style="{StaticResource ToolToggle}"
                                   Content="&#xE962;" FontFamily="Segoe MDL2 Assets"
                                   ToolTip="Mouse wheel lock (M or right-click the image): when on, scroll up/down goes to the previous/next image instead of zooming" />
+                    <!-- E8C8 is the copy glyph in Segoe MDL2 Assets. -->
+                    <Button Style="{StaticResource ToolButton}" Content="&#xE8C8;" FontFamily="Segoe MDL2 Assets"
+                            ToolTip="Copy image to clipboard (C)" Click="Copy_Click" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
                 </StackPanel>
                 <Button DockPanel.Dock="Right" Style="{StaticResource ToolButton}" Content="About" Click="About_Click" />
@@ -64,6 +67,11 @@
             </Image>
             <TextBlock x:Name="HintText" Text="Open an image (Ctrl+O)" Foreground="#888"
                        FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Border x:Name="Toast" Background="#E0202020" BorderBrush="#555" BorderThickness="1"
+                    CornerRadius="6" Padding="16,10" Opacity="0" IsHitTestVisible="False"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="ToastText" Foreground="White" FontSize="15" />
+            </Border>
         </Grid>
     </DockPanel>
 </Window>

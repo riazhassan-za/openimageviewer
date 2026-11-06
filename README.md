@@ -82,6 +82,7 @@ choose it from **Open with…** in Explorer, or drag an image onto the exe.
 | Scroll through images | Turn on **mouse wheel lock** with **M**, a **right-click** on the image, or the mouse icon. Scroll up then goes to the previous image and scroll down to the next |
 | Pan | **Left-click and drag** while zoomed in |
 | Fit to window | **F** or **Fit** |
+| Copy image to clipboard | **C** (or **Ctrl+C**), or the copy icon |
 | Full screen | **F11** or **⛶**. **Esc** exits |
 | Open a file | **Open**, **Ctrl+O**, click the folder path in the toolbar, or drag and drop a file onto the window |
 
