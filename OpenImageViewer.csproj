@@ -7,7 +7,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>OpenImageViewer</RootNamespace>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
+    <!-- Used for the exe in Explorer and, by WPF's default, the window title bar and taskbar. -->
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>
