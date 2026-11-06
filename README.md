@@ -13,8 +13,9 @@ no account and no ads. You open an image and step through the folder it's in.
 
 ![OpenImageViewer showing a photo, with the dark toolbar along the top](screenshots/viewer.png)
 
-*One toolbar: open, previous/next, zoom, fit, full screen, then the folder path,
-the image's position in the folder, its size, the zoom level, and About.*
+*One toolbar: open, previous/next, zoom, fit, full screen, mouse wheel lock and
+copy, then the folder path, the image's position in the folder, its size, the
+zoom level, and About.*
 
 ## Why this exists
 
