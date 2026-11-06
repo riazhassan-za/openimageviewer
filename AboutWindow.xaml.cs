@@ -15,6 +15,8 @@ public partial class AboutWindow : Window
     public AboutWindow()
     {
         InitializeComponent();
+        var v = typeof(AboutWindow).Assembly.GetName().Version!;
+        TitleText.Text = $"OpenImageViewer for Windows {v.Major}.{v.Minor}.{v.Build}";
         HomepageLink.NavigateUri = new Uri(Homepage);
         HomepageLink.Inlines.Add(Homepage);
         AddressBox.Text = DonationAddress;

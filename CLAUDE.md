@@ -7,6 +7,8 @@ no sidebars, no panels, just one simple toolbar along the top.
 ## Core behavior (requirements)
 - **Left / Up** go to the previous image and **Right / Down / Space** go to the next image in the same folder (sorted by name, wrapping around at the ends).
 - **Mouse scroll wheel** zooms in and out, centered on the cursor.
+- **+ / =** zoom in and **- / _** zoom out, centered on the window. Both characters on each key work, so a missed Shift doesn't matter, and so do numpad + and -.
+- **F** (or f) fits the image to the window, the same as the Fit button.
 - **Left-click drag** pans the image when it's zoomed in.
 - **Toolbar (top only, dark to match the background)**: Open, Previous, Next, Zoom out, Zoom in, Fit, then the folder path filling the remaining space (the file name is only in the window title), with the status (index, dimensions, zoom %) on the right.
 - Images open fit-to-window. Images smaller than the window are shown at their native pixel size, not stretched up.
@@ -35,3 +37,10 @@ GPL-3.0-or-later, the same as openvncviewer. See `LICENSE`. The About dialog sho
 dotnet build
 dotnet run -- "C:\path\to\image.jpg"   # path is optional
 ```
+
+## Releasing
+The version is `<Version>` in `OpenImageViewer.csproj`, and the About box reads it from there. To release, bump it, commit and push, then build from that commit:
+```powershell
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o publish
+```
+Rename the exe to `OpenImageViewer-x64.exe`, write `SHA256SUMS.txt` (`<sha256>  OpenImageViewer-x64.exe`), and attach both to a GitHub release tagged `vX.Y.Z`. The exe is unsigned, so the README's SmartScreen warning stays.

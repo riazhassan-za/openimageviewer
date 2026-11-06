@@ -22,11 +22,35 @@ through, zoom and pan.
 
 ## Requirements
 
-- Windows 10 or 11
-- [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) to run it,
-  or the .NET 8 SDK to build it
+- 64-bit Windows 10 or 11
+- Nothing else for the prebuilt executable. Building from source needs the
+  [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 ## Install
+
+### Prebuilt executable
+
+Download from the
+[latest release](https://github.com/riazhassan-za/openimageviewer/releases):
+
+`OpenImageViewer-x64.exe` is a single file with the .NET runtime bundled, for
+64-bit Windows 10 or Windows 11. There's nothing to install. You can check your
+download against `SHA256SUMS.txt` on the release page.
+
+**Windows SmartScreen will warn you on first run.** The executable isn't
+code-signed, because a signing certificate costs money every year and this
+project is free. A new, unsigned download gets the "Windows protected your PC"
+screen until enough people have run it. To run it anyway, click **More info**,
+then **Run anyway**. If you'd rather not trust the download, check its SHA-256
+hash first, or build it yourself from source (below).
+
+To check the hash in PowerShell:
+
+```powershell
+Get-FileHash .\OpenImageViewer-x64.exe -Algorithm SHA256
+```
+
+It should match the hash in `SHA256SUMS.txt`.
 
 ### From source
 
@@ -53,9 +77,9 @@ choose it from **Open with…** in Explorer, or drag an image onto the exe.
 | --- | --- |
 | Next image | **→**, **↓**, **Space** or **▶** |
 | Previous image | **←**, **↑** or **◀** |
-| Zoom in / out | Mouse **scroll wheel** (zooms around the cursor), or **+** / **−** |
+| Zoom in / out | Mouse **scroll wheel** (zooms around the cursor), the **+** / **−** buttons, or the keys **+** or **=** / **-** or **_** (Shift optional, numpad works too) |
 | Pan | **Left-click and drag** while zoomed in |
-| Fit to window | **Fit** |
+| Fit to window | **F** or **Fit** |
 | Full screen | **F11** or **⛶**. **Esc** exits |
 | Open a file | **Open**, **Ctrl+O**, click the folder path in the toolbar, or drag and drop a file onto the window |
 

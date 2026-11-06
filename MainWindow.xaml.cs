@@ -201,6 +201,10 @@ public partial class MainWindow : Window
         {
             case Key.Left or Key.Up: Step(-1); e.Handled = true; break;
             case Key.Right or Key.Down or Key.Space: Step(1); e.Handled = true; break;
+            // OemPlus is the "= +" key and OemMinus the "- _" key, so zoom works with or without Shift.
+            case Key.OemPlus or Key.Add: ZoomAtCenter(ZoomStep); e.Handled = true; break;
+            case Key.OemMinus or Key.Subtract: ZoomAtCenter(1 / ZoomStep); e.Handled = true; break;
+            case Key.F: ResetView(); e.Handled = true; break; // F or f (Shift doesn't matter)
             case Key.F11: SetFullscreen(!_fullscreen); e.Handled = true; break;
             case Key.Escape when _fullscreen: SetFullscreen(false); e.Handled = true; break;
             case Key.O when Keyboard.Modifiers == ModifierKeys.Control:

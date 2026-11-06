@@ -5,7 +5,7 @@
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
         Background="#2B2B2B" Foreground="#DDD">
     <StackPanel Margin="20">
-        <TextBlock Text="OpenImageViewer for Windows" FontWeight="Bold" FontSize="14" />
+        <TextBlock x:Name="TitleText" FontWeight="Bold" FontSize="14" />
         <TextBlock Margin="0,8,0,0" TextWrapping="Wrap"
                    Text="A simple, minimalist image viewer for Windows." />
         <!-- The GPL asks interactive programs to carry a warranty notice. -->
