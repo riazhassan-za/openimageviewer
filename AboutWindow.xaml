@@ -1,0 +1,40 @@
+<Window x:Class="OpenImageViewer.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About OpenImageViewer" Width="460" SizeToContent="Height"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Background="#2B2B2B" Foreground="#DDD">
+    <StackPanel Margin="20">
+        <TextBlock Text="OpenImageViewer for Windows" FontWeight="Bold" FontSize="14" />
+        <TextBlock Margin="0,8,0,0" TextWrapping="Wrap"
+                   Text="A simple, minimalist image viewer for Windows." />
+        <!-- The GPL asks interactive programs to carry a warranty notice. -->
+        <TextBlock Margin="0,8,0,0" TextWrapping="Wrap"
+                   Text="Copyright © 2026 The OpenImageViewer contributors.&#10;This program comes with ABSOLUTELY NO WARRANTY. It is free software, and you are welcome to redistribute it under the terms of the GNU General Public License, version 3 or later." />
+        <TextBlock Margin="0,8,0,0">
+            <Hyperlink x:Name="HomepageLink" Foreground="#6CB4FF" RequestNavigate="Link_RequestNavigate" />
+        </TextBlock>
+
+        <Rectangle Height="1" Fill="#444" Margin="0,14" />
+
+        <TextBlock TextWrapping="Wrap"
+                   Text="Tired of being ripped off for basic software that should be free? Send donations to help fund ad-free/subs-free software for great justice." />
+        <TextBlock Margin="0,10,0,4" Text="Send Bitcoin:" />
+        <DockPanel>
+            <Button DockPanel.Dock="Right" Style="{StaticResource ToolButton}" Content="Copy"
+                    Margin="6,0,0,0" Click="Copy_Click" />
+            <!-- Read-only TextBox so the address can be selected and copied by hand too. -->
+            <TextBox x:Name="AddressBox" IsReadOnly="True" FontFamily="Consolas"
+                     Background="#1E1E1E" Foreground="#DDD" BorderBrush="#444" Padding="4,3"
+                     VerticalContentAlignment="Center" />
+        </DockPanel>
+        <TextBlock Margin="0,4,0,0">
+            <Hyperlink x:Name="WalletLink" Foreground="#6CB4FF" RequestNavigate="Link_RequestNavigate">
+                Open in wallet
+            </Hyperlink>
+        </TextBlock>
+
+        <Button Style="{StaticResource ToolButton}" Content="Close" HorizontalAlignment="Right"
+                Margin="0,16,0,0" IsCancel="True" Click="Close_Click" />
+    </StackPanel>
+</Window>
