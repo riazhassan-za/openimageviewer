@@ -76,8 +76,9 @@ choose it from **Open with…** in Explorer, or drag an image onto the exe.
 | Action | How |
 | --- | --- |
 | Next image | **→**, **↓**, **Space** or **▶** |
-| Previous image | **←**, **↑** or **◀** |
+| Previous image | **←**, **↑**, **Backspace** or **◀** |
 | Zoom in / out | Mouse **scroll wheel** (zooms around the cursor), the **+** / **−** buttons, or the keys **+** or **=** / **-** or **_** (Shift optional, numpad works too) |
+| Scroll through images | Turn on **mouse wheel lock** with **M**, a **right-click** on the image, or the mouse icon. Scroll up then goes to the previous image and scroll down to the next |
 | Pan | **Left-click and drag** while zoomed in |
 | Fit to window | **F** or **Fit** |
 | Full screen | **F11** or **⛶**. **Esc** exits |

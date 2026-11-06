@@ -12,13 +12,17 @@
                 <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
                     <Button Style="{StaticResource ToolButton}" Content="Open" ToolTip="Open (Ctrl+O)" Click="Open_Click" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
-                    <Button Style="{StaticResource ToolButton}" Content="◀" ToolTip="Previous (Left / Up)" Click="Prev_Click" />
+                    <Button Style="{StaticResource ToolButton}" Content="◀" ToolTip="Previous (Left / Up / Backspace)" Click="Prev_Click" />
                     <Button Style="{StaticResource ToolButton}" Content="▶" ToolTip="Next (Right / Down / Space)" Click="Next_Click" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
                     <Button Style="{StaticResource ToolButton}" Content="−" ToolTip="Zoom out (scroll down, - or _)" Click="ZoomOut_Click" />
                     <Button Style="{StaticResource ToolButton}" Content="+" ToolTip="Zoom in (scroll up, + or =)" Click="ZoomIn_Click" />
                     <Button Style="{StaticResource ToolButton}" Content="Fit" ToolTip="Fit to window (F)" Click="Fit_Click" />
                     <Button Style="{StaticResource ToolButton}" Content="⛶" ToolTip="Fullscreen (F11, Esc to exit)" Click="Fullscreen_Click" />
+                    <!-- E962 is the mouse glyph in Segoe MDL2 Assets (built into Windows 10/11). -->
+                    <ToggleButton x:Name="WheelLock" Style="{StaticResource ToolToggle}"
+                                  Content="&#xE962;" FontFamily="Segoe MDL2 Assets"
+                                  ToolTip="Mouse wheel lock (M or right-click the image): when on, scroll up/down goes to the previous/next image instead of zooming" />
                     <Rectangle Style="{StaticResource ToolSeparator}" />
                 </StackPanel>
                 <Button DockPanel.Dock="Right" Style="{StaticResource ToolButton}" Content="About" Click="About_Click" />
@@ -45,6 +49,7 @@
 
         <Grid x:Name="Viewport" ClipToBounds="True" Background="#1E1E1E"
               MouseWheel="Viewport_MouseWheel"
+              MouseRightButtonUp="Viewport_MouseRightButtonUp"
               MouseLeftButtonDown="Viewport_MouseLeftButtonDown"
               MouseMove="Viewport_MouseMove"
               MouseLeftButtonUp="Viewport_MouseLeftButtonUp">

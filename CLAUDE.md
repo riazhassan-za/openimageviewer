@@ -5,8 +5,9 @@ A simple, minimalist image viewer for Windows. It shows one image at a time and 
 no sidebars, no panels, just one simple toolbar along the top.
 
 ## Core behavior (requirements)
-- **Left / Up** go to the previous image and **Right / Down / Space** go to the next image in the same folder (sorted by name, wrapping around at the ends).
+- **Left / Up / Backspace** go to the previous image and **Right / Down / Space** go to the next image in the same folder (sorted by name, wrapping around at the ends).
 - **Mouse scroll wheel** zooms in and out, centered on the cursor.
+- **Mouse wheel lock** (mouse-icon toggle in the toolbar, highlighted when on, **M** or m, or right-clicking the image area, toggles it): while it's on, scroll up goes to the previous image (like Left) and scroll down to the next (like Right), one image per wheel notch, instead of zooming. Zoom still works from the keys and buttons. It starts off each time the app opens.
 - **+ / =** zoom in and **- / _** zoom out, centered on the window. Both characters on each key work, so a missed Shift doesn't matter, and so do numpad + and -.
 - **F** (or f) fits the image to the window, the same as the Fit button.
 - **Left-click drag** pans the image when it's zoomed in.

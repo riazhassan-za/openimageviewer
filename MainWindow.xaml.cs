@@ -104,8 +104,25 @@ public partial class MainWindow : Window
         ZoomAt(Viewport.TranslatePoint(center, ImageView), factor);
     }
 
-    private void Viewport_MouseWheel(object sender, MouseWheelEventArgs e) =>
-        ZoomAt(e.GetPosition(ImageView), e.Delta > 0 ? ZoomStep : 1 / ZoomStep);
+    private int _wheelDelta;
+
+    private void ToggleWheelLock() => WheelLock.IsChecked = WheelLock.IsChecked != true;
+
+    private void Viewport_MouseRightButtonUp(object sender, MouseButtonEventArgs e) => ToggleWheelLock();
+
+    private void Viewport_MouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        if (WheelLock.IsChecked != true)
+        {
+            ZoomAt(e.GetPosition(ImageView), e.Delta > 0 ? ZoomStep : 1 / ZoomStep);
+            return;
+        }
+        // Wheel lock: up = previous (Left), down = next (Right). Step once per notch (120),
+        // so touchpads that send many small deltas don't race through the folder.
+        _wheelDelta += e.Delta;
+        while (_wheelDelta >= Mouse.MouseWheelDeltaForOneLine) { Step(-1); _wheelDelta -= Mouse.MouseWheelDeltaForOneLine; }
+        while (_wheelDelta <= -Mouse.MouseWheelDeltaForOneLine) { Step(1); _wheelDelta += Mouse.MouseWheelDeltaForOneLine; }
+    }
 
     private void Viewport_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
@@ -199,12 +216,13 @@ public partial class MainWindow : Window
     {
         switch (e.Key)
         {
-            case Key.Left or Key.Up: Step(-1); e.Handled = true; break;
+            case Key.Left or Key.Up or Key.Back: Step(-1); e.Handled = true; break;
             case Key.Right or Key.Down or Key.Space: Step(1); e.Handled = true; break;
             // OemPlus is the "= +" key and OemMinus the "- _" key, so zoom works with or without Shift.
             case Key.OemPlus or Key.Add: ZoomAtCenter(ZoomStep); e.Handled = true; break;
             case Key.OemMinus or Key.Subtract: ZoomAtCenter(1 / ZoomStep); e.Handled = true; break;
             case Key.F: ResetView(); e.Handled = true; break; // F or f (Shift doesn't matter)
+            case Key.M: ToggleWheelLock(); e.Handled = true; break;
             case Key.F11: SetFullscreen(!_fullscreen); e.Handled = true; break;
             case Key.Escape when _fullscreen: SetFullscreen(false); e.Handled = true; break;
             case Key.O when Keyboard.Modifiers == ModifierKeys.Control:
