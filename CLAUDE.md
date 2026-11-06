@@ -30,7 +30,7 @@ no sidebars, no panels, just one simple toolbar along the top.
 - `MainWindow.xaml(.cs)`: toolbar, viewport, zoom/pan transforms, folder navigation
 - `AboutWindow.xaml(.cs)`: About / donation dialog
 - Shared dark button and separator styles live in `App.xaml`
-- `app.ico`: the app icon, a white picture frame and magnifying glass on a black rounded tile, in black and white only. It contains 16–256 px sizes, each drawn separately so small sizes stay sharp. Regenerate it with `powershell -STA -File tools\make-icon.ps1 -OutDir <folder>` (WPF drawing, no dependencies), then copy `<folder>\app.ico` over `app.ico`.
+- `app.ico`: the app icon, a white picture frame and magnifying glass on a black rounded tile, in black and white only. It contains 16–256 px sizes, each drawn separately so small sizes stay sharp. Regenerate it with `powershell -STA -File tools\make-icon.ps1 -OutDir <folder>` (WPF drawing, no dependencies), then copy `<folder>\app.ico` over `app.ico` and `<folder>\icon-256.png` over `assets/icon.png` (the README logo).
 
 ## License
 GPL-3.0-or-later, the same as openvncviewer. See `LICENSE`. The About dialog shows the GPL copyright and no-warranty notice.

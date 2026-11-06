@@ -1,3 +1,5 @@
+<img src="assets/icon.png" alt="OpenImageViewer icon" width="128">
+
 # OpenImageViewer for Windows
 
 **A simple, minimalist image viewer for Windows.**
